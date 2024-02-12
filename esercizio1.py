@@ -49,14 +49,16 @@ plt.show()
 regioni_analysis = df.groupby('RegionName')[['TotalPositiveCases', 'Recovered', 'Deaths']].sum()
 regioni_analysis['LetalityRate'] = regioni_analysis['Deaths'] / regioni_analysis['TotalPositiveCases'] * 100
 
-# 4. Capacità ospedaliera
-plt.figure(figsize=(12, 6))
+# 4. numero patienti ospedalizzati per regione
+plt.figure(figsize=(16, 8))  # Aumenta la dimensione del grafico
 sns.barplot(x='RegionName', y='TotalHospitalizedPatients', data=df)
-plt.title('Capacità ospedaliera per regione')
+plt.title('Numero di pazienti ospedalizzati per regione')
 plt.xlabel('Regione')
 plt.ylabel('Pazienti ospedalizzati')
-plt.xticks(rotation=45)
+plt.xticks(rotation=45, ha='right')  # Ruota le etichette delle regioni sull'asse x
+plt.tight_layout()  # Ottimizza la disposizione del layout
 plt.show()
+
 
 # 5. Analisi delle correlazioni
 # Escludi colonne non numeriche dalla matrice di correlazione
